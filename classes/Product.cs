@@ -1,4 +1,4 @@
-class Product
+public class Product
 {
     public static int Id { get; set; }
     public static int Name { get; set; }
