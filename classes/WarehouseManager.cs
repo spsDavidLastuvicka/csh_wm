@@ -52,7 +52,7 @@ public class WarehouseManager
         using (var reader = successCmd.ExecuteReader())
         {
             reader.Read();
-            if ((long)reader[0] == 1) { Console.WriteLine($"Produkt ID {product.Id} přídán úspěšně."); }
+            if ((long)reader[0] == 1) { Console.WriteLine($"Produkt {product.Name} přídán úspěšně."); }
         }
         connection.Close();
     }
