@@ -12,4 +12,12 @@ public class Product
         this.Price = Price;
         this.Quantity = Quantity;
     }
+
+    public Product(string? Name, decimal Price, int Quantity)
+    {
+        this.Id = -1;
+        this.Name = Name;
+        this.Price = Price;
+        this.Quantity = Quantity;
+    }
 }

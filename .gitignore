@@ -3,6 +3,7 @@
 ##
 ## Get latest from `dotnet new gitignore`
 products.db
+temp_products.db
 # dotenv files
 .env
 
