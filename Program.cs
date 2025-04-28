@@ -23,6 +23,7 @@ Product[] samples =
 var WM = new WarehouseManager();
 
 bool running = true;
+//MAIN LOOP
 while(running)
 {
     switch (WarehouseManager.MainMenu()+1)
