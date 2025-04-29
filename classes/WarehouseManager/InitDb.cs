@@ -19,7 +19,7 @@ public partial class WarehouseManager
             (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 NAME TEXT,
-                PRICE DECIMAL(6,2),
+                PRICE REAL,
                 QUANTITY INTEGER
             )
         ";
