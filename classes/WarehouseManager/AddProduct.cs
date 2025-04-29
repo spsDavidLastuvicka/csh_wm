@@ -2,7 +2,7 @@ public partial class WarehouseManager
 {
     public void AddProduct(Product product)
     {
-        if(product.Id != -2)
+        if (product.Id != -2)
         {
             connection.Open();
             var AddProductCmd = connection.CreateCommand();

@@ -22,9 +22,9 @@ var WM = new WarehouseManager();
 
 bool running = true;
 //MAIN LOOP
-while(running)
+while (running)
 {
-    switch (WarehouseManager.MainMenu()+1)
+    switch (WarehouseManager.MainMenu() + 1)
     {
         case -1:
             running = false;
@@ -34,7 +34,7 @@ while(running)
             {
                 WM.AddProduct(WarehouseManager.AddProductMenu());
             }
-            catch(SqliteException)
+            catch (SqliteException)
             {
                 Console.WriteLine("ERROR DATABÁZE. PRODUKT S TÍMTO ID UZ EXISTUJE.");
                 Console.ReadLine();
@@ -45,7 +45,7 @@ while(running)
             {
                 WM.AddSamples(samples);
             }
-            catch(SqliteException)
+            catch (SqliteException)
             {
                 Console.WriteLine("ERROR DATABÁZE. ALESPOŇ JEDEN PRODUKT S TÍMTO ID UZ EXISTUJE.");
                 Console.ReadLine();
@@ -58,19 +58,20 @@ while(running)
         case 4: //SEARCH PRODUCTS BY NAME
             Console.Write("Zadejte jméno produktu: ");
             WM.SearchProducts(Console.ReadLine());
-            break;  
+            break;
         case 5: //SEARCH PRODUCTS BY NAME AND PRICE
             Console.Write("Zadejte jméno produktu: ");
             string? name = Console.ReadLine();
             Console.WriteLine("Zadejte max. cenu produktu ve formátu 0,00");
             decimal price = 0.0m;
             decimal.TryParse(Console.ReadLine(), out price);
-            WM.SearchProducts(name,price);
-            break;  
+            WM.SearchProducts(name, price);
+            break;
         case 6: //DELETE PRODUCTS
             Console.Write("ID produktu na smazání?: ");
             int id;
-            while(!int.TryParse(Console.ReadLine(),out id)){
+            while (!int.TryParse(Console.ReadLine(), out id))
+            {
                 Console.Write("Špatný vstup. Zkuste znovu:");
             }
             WM.DeleteProduct(id);

@@ -3,7 +3,7 @@ public partial class Tools
     public static int OptionSelector(string Text, params string[] Options)
     {
         Console.Clear();
-        Console.WriteLine(Text);
+        WriteColor(Text: Text, Foreground: ConsoleColor.Yellow);
 
         int option = 0;
         bool first_line = true;
@@ -51,7 +51,7 @@ public partial class Tools
                 case ConsoleKey.Escape:
                     Console.Clear();
                     running = false;
-                    break; 
+                    break;
             }
         }
         return -2;
