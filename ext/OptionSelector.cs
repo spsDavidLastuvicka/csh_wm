@@ -16,7 +16,8 @@ public partial class Tools
         }
         Console.CursorTop = 1;
 
-        while (true)
+        bool running = true;
+        while (running)
         {
             switch (Console.ReadKey(true).Key)
             {
@@ -47,7 +48,12 @@ public partial class Tools
                 case ConsoleKey.Enter:
                     Console.Clear();
                     return option;
+                case ConsoleKey.Escape:
+                    Console.Clear();
+                    running = false;
+                    break; 
             }
         }
+        return -2;
     }
 }

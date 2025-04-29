@@ -11,9 +11,9 @@ public partial class WarehouseManager
                 "Vypsat produkty",
                 "Vyhledat produkt podle jména",
                 "Vyhledat produkt podle jména a max. ceny",
-                "Smazat produkt"
-                // "Potvrdit změny & ukončit",
-                // "Rollback"
+                "Smazat produkt",
+                "Potvrdit změny & ukončit",
+                "Rollback"
             }
         );
     }

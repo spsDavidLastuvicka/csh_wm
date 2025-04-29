@@ -6,6 +6,7 @@ public partial class WarehouseManager
     public static void InitDb(string connectionString)
     {
         connection = new SqliteConnection(connectionString);
+        connection2 = new SqliteConnection("Data Source=products.db");
         connection.Open();
 
         // Query for auto creation of Products table in database

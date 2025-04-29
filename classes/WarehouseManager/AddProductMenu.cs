@@ -108,6 +108,11 @@ public partial class WarehouseManager
 
                     decimal price;
                     int quantity;
+                    if (values[1].Trim() == "" || values[1] == null)
+                    {
+                        PrintError(Error: "Missing name!");
+                        break;
+                    }
                     try
                     {
                         price = decimal.Parse(values[2]);
@@ -141,7 +146,7 @@ public partial class WarehouseManager
                     }
                 case ConsoleKey.Escape:
                     Console.ResetColor();
-                    return new Product(Id:-2,Name:"",Price:0,Quantity:0);
+                    return new Product(Id: -2, Name: "", Price: 0, Quantity: 0);
                 default:
                     switch (choice)
                     {

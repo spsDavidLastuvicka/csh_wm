@@ -1,6 +1,7 @@
 using System.IO;
 public partial class WarehouseManager
 {
+    //creates a temporary database for rollback functions
     public static void Startup()
     {
         if (!File.Exists("temp_products.db"))

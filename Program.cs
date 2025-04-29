@@ -1,9 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 //ROLLBACK FUNCTION
-//WarehouseManager.Startup();
-//WarehouseManager.InitDb(connectionString: "Data Source=temp_products.db");
-
-WarehouseManager.InitDb(connectionString: "Data Source=products.db");
+WarehouseManager.Startup();
+WarehouseManager.InitDb(connectionString: "Data Source=temp_products.db");
 
 //SAMPLE DATA
 Product[] samples =
@@ -11,7 +9,7 @@ Product[] samples =
     new Product(Id:1,   Name:"Mobilní telefon",                                        Price:4990.90m, Quantity:4),
     new Product(Id:2,   Name:"Osobní počítač",                                         Price:7890.90m, Quantity:2),
     new Product(Id:3,   Name:"Bezdrátové sluchátka",                                   Price:890.90m,  Quantity:9),
-    new Product(Id:4,   Name:"Učebnice češtiny",                                       Price:320.90m,  Quantity:22),
+    new Product(Id:4,   Name:"Mobilní telefon",                                        Price:3199.90m,  Quantity:2),
     new Product(Id:5,   Name:"Mountain Dew 2l",                                        Price:26.90m,   Quantity:29),
     new Product(Id:6,   Name:"Stolní lampa",                                           Price:529.90m,  Quantity:7),
     new Product(Id:7,   Name:"Monitor",                                                Price:4899.90m, Quantity:2),
@@ -28,6 +26,9 @@ while(running)
 {
     switch (WarehouseManager.MainMenu()+1)
     {
+        case -1:
+            running = false;
+            break;
         case 1: //ADD PRODUCTS
             try
             {
@@ -75,19 +76,24 @@ while(running)
             WM.DeleteProduct(id);
             break;
 
-        //NOT FUNCTIONAL
-        // case 7: //CONFIRM
-        //     WarehouseManager.connection.Dispose();
-        //     File.Delete("products.db");
-        //     File.Copy("temp_products.db","products.db");
-        //     Thread.Sleep(100);
-        //     File.Delete("temp_products.db");
-        //     WarehouseManager.InitDb(connectionString:"Data Source=temp_products.db");
-        //     running = false;
-        //     break;
-        // case 8: //ROLLBACK
-        //     File.Delete("temp_products.db");
-        //     File.Copy("products.db", "temp_products.db");
-        //     break;
+        case 7: //CONFIRM
+            WarehouseManager.connection.Open();
+            WarehouseManager.connection2.Open();
+
+            WarehouseManager.connection.BackupDatabase(WarehouseManager.connection2);
+
+            WarehouseManager.connection.Close();
+            WarehouseManager.connection2.Close();
+            running = false;
+            break;
+        case 8: //ROLLBACK
+            WarehouseManager.connection.Open();
+            WarehouseManager.connection2.Open();
+
+            WarehouseManager.connection2.BackupDatabase(WarehouseManager.connection);
+
+            WarehouseManager.connection.Close();
+            WarehouseManager.connection2.Close();
+            break;
     }
 }
